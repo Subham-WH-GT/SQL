@@ -1,0 +1,18 @@
+create table emp(
+    e_id int primary key,
+    e_name varchar(50) not null,
+    dept varchar(20),
+    salary int
+);
+insert into emp
+(e_id,e_name,dept,salary)
+values
+(1,'Ram','HR',10000),
+(2,'Amrit','MRKT',20000),
+(3,'Ravi','HR',30000),
+(4,'Nitin','MRKT',40000),
+(5,'Varun','IT',50000);
+select * from emp;
+
+#Sql query to display all the dept and no. of employes working?
+select dept,count(*) from emp group by dept; 

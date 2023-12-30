@@ -1,0 +1,21 @@
+create table emp(
+    e_id int primary key,
+    e_name varchar(50) not null,
+    dept varchar(20),
+    salary int
+);
+insert into emp
+(e_id,e_name,dept,salary)
+values
+(1,'Ram','HR',10000),
+(2,'Amrit','HR',20000),
+(3,'Ravi','HR',30000),
+(4,'Nitin','HR',40000),
+(5,'Varun','HR',50000);
+select * from emp;
+
+#Sql query to display the second highest salary from the table?
+select max(salary) from emp where salary !=(select max(salary) from emp);
+
+#Sql query to print the e_name of the person taking second largest salary?
+select e_name from emp where salary=(select max(salary) from emp where salary !=(select max(salary) from emp));

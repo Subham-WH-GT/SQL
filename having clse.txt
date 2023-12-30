@@ -1,0 +1,22 @@
+create table emp(
+    e_id int primary key,
+    e_name varchar(50) not null,
+    dept varchar(20),
+    salary int
+);
+insert into emp
+(e_id,e_name,dept,salary)
+values
+(1,'Ram','HR',10000),
+(2,'Amrit','MRKT',20000),
+(3,'Ravi','HR',30000),
+(4,'Nitin','MRKT',40000),
+(5,'Varun','IT',50000);
+select * from emp;
+
+#Sql query to display all the dept names where no. of emp is less than 2?
+select dept from emp group by dept having count(*)<2; 
+
+#Sql query to display the name of the emp where no. of emp < 2?
+select e_name from emp where dept in (select dept from emp group by dept having count(*) < 2);
+# we used 'in' instead of '=' bcz there can be more than dep with emp <2.
