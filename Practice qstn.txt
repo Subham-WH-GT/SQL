@@ -1,0 +1,21 @@
+create table payment(
+    customer_id int primary key,
+    customer varchar(30),
+    mode varchar(30),
+    city varchar(30),
+    amount int
+);
+
+insert into payment
+(customer_id,customer,mode,city,amount)
+values
+(101,'Rizwan','NetBanking','poland',1200),
+(102,'Miraz','Creditcard','malabar',1899),
+(103,'Rohan','NetBanking','france',5635),
+(104,'Gaikward','Creditcard','India',4232),
+(105,'Ritthik','Debitcard','Gia',1897),
+(106,'Sonia','NetBanking','Yugg',9987);
+select * from payment;
+
+#From the given table find the total payment according to each payment method.
+select mode,sum(amount) from payment group by mode
