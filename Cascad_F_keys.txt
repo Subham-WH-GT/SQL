@@ -1,0 +1,49 @@
+create table emp(
+    e_id int primary key,
+    e_name varchar(10),
+    address varchar(10)
+);
+insert into emp
+(e_id,e_name,address)
+values
+(1,"Ravi","Chandigarh"),
+(2,"Varun","Delhi"), 
+(3,"Bishal","Haryana"), 
+(4,"Rishi","Gwahati"), 
+(5,"Nitin","Andhra");
+select * from emp;
+
+create table project(
+    e_id int,
+    foreign key(e_id) references emp(e_id)
+    on update cascade
+    on delete cascade,  #Cascade is used if sometime we change data in the parent table then it will reflect in the child table also
+    pjt_id int primary key,
+    pjt_name varchar(10),
+    location varchar(10)
+);
+insert into project
+(e_id,pjt_id,pjt_name,location)
+values
+(1,1,"IOT","Bangalore"),
+(5,2,"BIGDATA","Delhi"),
+(3,3,"RETAIL","Mumbai"),
+(4,4,"ANDROID","hydrabad");
+select * from project;
+
+#Updating the parent table
+update emp set e_id=15 where e_id=5;
+select * from emp;
+select * from project;
+
+#When we want to update multiple row with different values
+update emp 
+set e_id=case
+    when e_id=1 then 11
+    when e_id=2 then 12
+    when e_id=3 then 13
+    when e_id=4 then 14
+    else e_id
+end;
+select * from emp;
+select * from project;

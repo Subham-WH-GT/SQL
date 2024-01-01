@@ -1,0 +1,36 @@
+# Functionality of corelated subqueries using exists and not-exists
+create table emp(
+    e_id int primary key,
+    e_name varchar(20),
+    address varchar(10)
+);
+insert into emp
+(e_id,e_name,address)
+values
+(1,"Ravi","Chandigarh"),
+(2,"Varun","Delhi"), 
+(3,"Bishal","Haryana"), 
+(4,"Rishi","Gwahati"), 
+(5,"Nitin","Andhra");
+select * from emp;
+
+create table project(
+    e_id int,
+    foreign key(e_id) references emp(e_id),
+    pjt_id int primary key,
+    pjt_name varchar(50),
+    location varchar(50)
+);
+insert into project
+(e_id,pjt_id,pjt_name,location)
+values
+(1,1,"IOT","Bangalore"),
+(5,2,"BIGDATA","Delhi"),
+(3,3,"RETAIL","Mumbai"),
+(4,4,"ANDROID","hydrabad");
+select * from project;
+
+#Query to get the detail of the employee working on a project.
+select * from emp where exists(select 1 from  project where emp.e_id=project.e_id);
+#Query to get the detail of the employee not working on a project.
+select * from emp where not exists(select 1 from project where emp.e_id=project.e_id);

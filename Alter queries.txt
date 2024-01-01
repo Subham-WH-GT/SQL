@@ -1,0 +1,51 @@
+create table emp(
+    e_id int primary key,
+    e_name varchar(10),
+    address varchar(10)
+);
+insert into emp
+(e_id,e_name,address)
+values
+(1,"Ravi","Chandigarh"),
+(2,"Varun","Delhi"), 
+(3,"Bishal","Haryana"), 
+(4,"Rishi","Gwahati"), 
+(5,"Nitin","Andhra");
+select * from emp;
+
+#Adding a new column experience in the emp table
+alter table emp
+add column experience int default 0;
+select * from emp;
+
+#Set values for the new column
+update emp
+set experience=case
+    when e_id=1 then 5
+    when e_id=2 then 2
+    when e_id=3 then 2
+    when e_id=4 then 8
+    when e_id=5 then 4
+    else 0
+end;
+select * from emp;
+
+#Delete a column
+alter table emp
+drop column experience;
+select * from emp;
+
+#Rename a table name
+alter table emp
+rename to employee;
+#select * from emp --> this would give error 
+select * from employee;
+
+#Rename a column name
+alter table employee
+change column e_id emp_id int;
+select * from employee;
+
+#modify datatype or constrains in a column
+alter table employee
+modify emp_id int not null;

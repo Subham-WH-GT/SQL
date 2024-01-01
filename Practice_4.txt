@@ -1,0 +1,27 @@
+create table student(
+    roll_no int primary key,
+    name varchar(10),
+    marks int,
+    grade varchar(2)
+);
+insert into student
+(roll_no,name,marks,grade)
+values
+(101,'Anil',55,'D'),
+(102,'Bhumika',93,'B'),
+(103,'Subham',99,'A');
+select * from student;
+/*Tasks-->  a.Change the name of column "name" to "full_name".
+           b. Delete all the students who scored less than 60.
+           c. Delete the column for grades. */   
+alter table student
+change column name full_name varchar(10);
+select * from student;
+
+delete from student
+where marks<60;
+select * from student;
+
+alter table student
+drop column grade;
+select * from student;

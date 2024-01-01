@@ -1,0 +1,34 @@
+# DropVsTruncate
+create table emp(
+    e_id int primary key,
+    e_name varchar(10),
+    address varchar(10)
+);
+insert into emp
+(e_id,e_name,address)
+values
+(1,"Ravi","Chandigarh"),
+(2,"Varun","Delhi"), 
+(3,"Bishal","Haryana"), 
+(4,"Rishi","Gwahati"), 
+(5,"Nitin","Andhra");
+select * from emp;
+
+drop table emp; #This deletes the entire table
+# select * from emp; #Hence this query gives error since no emp table exists
+create table emp(
+    e_id int primary key,
+    e_name varchar(10),
+    address varchar(10)
+);
+insert into emp
+(e_id,e_name,address)
+values
+(1,"Ravi","Chandigarh"),
+(2,"Varun","Delhi"), 
+(3,"Bishal","Haryana"), 
+(4,"Rishi","Gwahati"), 
+(5,"Nitin","Andhra");
+select * from emp;
+truncate table emp;
+select * from emp; #this would not give error, bcz the table still exists
