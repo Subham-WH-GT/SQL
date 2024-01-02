@@ -1,0 +1,44 @@
+create table emp(
+    e_no int primary key,
+    e_name varchar(10),
+    address varchar(10)
+);
+insert into emp
+(e_no,e_name,address)
+values
+(1,'Ram','Punjab'),
+(2,'Varun','Chandigar'),
+(3,'Krishna','Gujarat'),
+(4,'Ishaan','Lucknow');
+select * from emp;
+
+create table job(
+     d_no varchar(2),
+    name varchar(10),
+    e_no int
+);
+
+insert into job
+(d_no,name,e_no)
+values
+('D1','HR',1),
+('D2','IT',2),
+('D3','AUDIT',4);
+select * from job;
+
+#Query the emp name who is working in a department
+
+ -- --> Using natural joins
+ --   Natural joins can be used only when there is a common
+ --  column between two tablw with exactly the same name
+
+select e_name from emp natural join job;
+
+  -- if there is a common column between two table but with 
+  -- different name then we cant directly use the natural keyword
+
+alter table job
+change column e_no emp_no int;
+select * from job;
+
+select e_name from emp,job where emp.e_no=job.emp_no;
