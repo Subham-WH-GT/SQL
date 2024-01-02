@@ -1,0 +1,18 @@
+create table emp(
+    e_id int primary key,
+    e_name varchar(50),
+    address varchar(50)
+);
+insert into emp
+(e_id,e_name,address)
+values
+(1,"Ravi","Chandigarh"),
+(2,"Varun","Delhi"), 
+(3,"Bishal","Haryana"), 
+(4,"Rishi","Gwahati"), 
+(5,"Nitin","Andhra"),
+(6,"Rahul","Goa");
+select * from emp;
+
+#query all the name of the employee whose name has 'a' in the second position?
+select e_name from emp where e_name like '_a%';

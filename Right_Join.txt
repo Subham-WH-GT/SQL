@@ -1,0 +1,38 @@
+-- Create the student table
+CREATE TABLE student (
+    s_id INT PRIMARY KEY,
+    name VARCHAR(10)
+);
+
+-- Insert data into the student table
+INSERT INTO student (s_id, name)
+VALUES
+    (101, 'Ramesh'),
+    (102, 'Neharika'),
+    (103, 'Akansha');
+
+-- Display the contents of the student table
+SELECT * FROM student;
+
+-- Create the course table
+CREATE TABLE course (
+    s_id INT,
+    course VARCHAR(10)
+);
+
+-- Insert data into the course table
+INSERT INTO course (s_id, course)
+VALUES 
+    (102, 'English'),
+    (105, 'Python'),
+    (103, 'SQL'),
+    (107, 'Physics');
+
+-- Display the contents of the course table
+SELECT * FROM course;
+
+-- right join with proper condition
+SELECT c.s_id,c.course,s.name  #specifically we used the column name to avoid duplicacy of the matched column
+FROM student AS s
+right JOIN course AS c 
+ON s.s_id = c.s_id;
