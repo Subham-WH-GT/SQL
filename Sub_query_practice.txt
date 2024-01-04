@@ -1,0 +1,17 @@
+create table class(
+    roll int primary key,
+    name varchar(10),
+    marks int
+);
+insert into class
+(roll,name,marks)
+values
+(101,'Anil',78),
+(102,'Bhumika',93),
+(103,'Chetan',85),
+(104,'Dhruv',96),
+(105,'Ritik',92),
+(106,'Farah',82);
+#Query to display the names of the student who scored 
+#more than class average.
+select name from class where marks > (select avg(marks) from class);

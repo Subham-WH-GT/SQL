@@ -1,0 +1,30 @@
+#Left Exclusive join, displays the data present only in the left table and not in the right table. 
+
+create table student(
+    s_id int primary key,
+    name varchar(10)
+);
+insert into student
+    (s_id,name)
+ values
+    (101,'Ruby'),
+    (102,'Rishav'),
+    (103,'Bhaivao');
+select * from student;
+create table course(
+    s_id int,
+    course varchar(10)
+);
+insert into course
+    (s_id,course)
+ values
+    (102,'C++'),
+    (105,'SQL'),
+    (103,'Oops'),
+    (107,'Management');
+select * from course;
+
+#Query to display detail of the student present in the student table but not in the course table;
+
+select * from student as s left join course as c 
+on s.s_id=c.s_id where c.s_id is null;

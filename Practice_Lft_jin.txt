@@ -1,0 +1,27 @@
+create table emp(
+    e_no varchar(2),
+    e_name varchar(10),
+    d_no varchar(2)
+);
+insert into emp
+(e_no,e_name,d_no)
+values
+('E1','Varun','D1'),
+('E2','Amrit','D2'),
+('E3','Ravi','D1'),
+('E4','Nitin',null);
+select * from emp;
+create table dept(
+    d_no varchar(2),
+    d_name varchar(10),
+    location varchar(10)
+);
+insert into dept
+(d_no,d_name,location)
+values
+('D1','IT','Delhi'),
+('D2','HR','Hydrabad'),
+('D3','FINANCE','Pune');
+select * from dept;
+
+select e_no,e_name,emp.d_no,d_name,location from emp left outer join dept on(emp.d_no=dept.d_no);
