@@ -1,0 +1,20 @@
+create table class(
+    roll int primary key,
+    name varchar(10),
+    marks int,
+    city varchar(10)
+);
+insert into class
+(roll,name,marks,city)
+values
+(101,'Anil',78,'Pune'),
+(102,'Bhumika',93,"Mumbai"),
+(103,'Chetan',85,"Mumbai"),
+(104,'Dhruv',96,'Delhi'),
+(105,'Ritik',92,'Delhi'),
+(106,'Farah',82,'Delhi');
+#Query to display the names of the student Who has even roll number.
+select name from class where roll in (select roll from class where (roll%2=0)) order by name desc;
+
+#Query name of the student whose marks is greatest from Delh
+select max(marks) from (select * from class where city='Delhi') as temp;
