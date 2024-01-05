@@ -1,0 +1,29 @@
+#Query to display the roll,name of the students who have a total of less than 100 marks including all 3 subjects;
+create table s_info(
+    roll int primary key,
+    name varchar(15)
+);
+insert into s_info
+    (roll,name)
+    values
+    (1,'Sheila'),
+    (2,'Rachel'),
+    (3,'Christopher');
+select * from s_info;
+create table e_marks(
+    roll int primary key,
+    subject1 int,
+    subject2 int,
+    subject3 int
+);
+insert into e_marks
+    (roll,subject1,subject2,subject3)
+    values
+    (1,32,38,64),
+    (2,24,21,25),
+    (3,55,12,10);
+select * from e_marks;
+select s_info.roll,s_info.name from s_info where 
+s_info.roll in(select roll from e_marks where 
+    (subject1+subject2+subject3 < 100));
+

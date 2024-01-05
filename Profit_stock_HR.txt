@@ -1,0 +1,26 @@
+#Query to find the stock_codes of all the stocks which are profitable and print the output in ascending order
+create table p_today(
+    s_code varchar(10) primary key,
+    price int 
+);
+insert into p_today
+    (s_code,price)
+    values
+    ('TITAN',560),
+    ('MRF',950),
+    ('GOOGL',200);
+select * from p_today;
+create table p_tomm(
+    s_code varchar(10) primary key,
+    price int
+);
+insert into p_tomm
+    (s_code,price)
+    values
+    ('TITAN',750),
+    ('MRF',800),
+    ('GOOGL',210);
+select * from p_today;
+
+select tod.s_code from p_today as tod,p_tomm as tom where
+    (tod.s_code=tom.s_code and tom.price>tod.price) order by s_code;

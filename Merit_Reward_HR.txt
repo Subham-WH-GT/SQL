@@ -1,0 +1,31 @@
+-- Query to find the emploee ID along with the names of the employee who work
+-- in the HR department who earned a bonus of 5000 dollaes or more in the last
+-- quarter
+
+create table e_info(
+    e_id int primary key,
+    name varchar(10),
+    division varchar(10)
+);
+insert into e_info
+(e_id,name,division)
+values
+(1,'Julia','HR'),
+(2,'Samantha','Tech'),
+(3,'Richard','HR');
+select * from e_info;
+create table last_q(
+    e_id int primary key,
+    bonus int
+);
+
+insert into last_q
+(e_id,bonus)
+values
+(1,2000),
+(2,5500),
+(3,6240);
+select * from last_q;
+
+select e_info.e_id,e_info.name from e_info,last_q where 
+(e_info.e_id=last_q.e_id and e_info.division='HR' and last_q.bonus>=5000);
